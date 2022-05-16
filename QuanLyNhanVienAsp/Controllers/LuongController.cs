@@ -47,5 +47,39 @@ namespace QuanLyNhanVienAsp.Controllers
             luongDao.Delete(luong.idLuong);
             return RedirectToAction("Index", new { msg = "1" });
         }
+
+        public ActionResult TangLuong(FormCollection form)
+        {
+            var thang = form["thang"];
+            if (thang == null)
+            {
+                return View();
+            }
+            else
+            {
+                int thangtangluong = Int32.Parse(thang);
+                ViewBag.Thang = thang;
+                ViewBag.List = luongDao.TangLuong(thangtangluong);
+                return View();
+            }
+
+        }
+
+        public ActionResult BangLuong(FormCollection form)
+        {
+            var thang = form["thang"];
+            if (thang == null)
+            {
+                return View();
+            }
+            else
+            {
+                int thangtangluong = Int32.Parse(thang);
+                ViewBag.Thang = thang;
+                ViewBag.List = luongDao.BangLuong(thangtangluong);
+                return View();
+            }
+
+        }
     }
 }

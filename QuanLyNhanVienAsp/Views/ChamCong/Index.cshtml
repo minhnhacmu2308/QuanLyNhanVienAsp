@@ -21,7 +21,7 @@
                     else if (ViewBag.Msg == "2")
                     {
                         <div class="alert alert-danger">
-                            <strong>Đã tồn tại</strong>
+                            <strong>Đã chấm công</strong>
                         </div>
                     }
 
@@ -87,9 +87,9 @@
                                                 </div>
 
                                                 <div class="modal-body">
-                                                    Lương : @item.NhanVien.hoTen
-                                                    <form action="/Luong/Delete" method="post">
-                                                        <input type="hidden" class="form-control" id="id" name="idLuong" value="@item.idChamCong">
+                                                    Ngày chấm công của nhân viên : @item.NhanVien.hoTen
+                                                    <form action="/ChamCong/Delete" method="post">
+                                                        <input type="hidden" class="form-control" id="id" name="idChamCong" value="@item.idChamCong">
                                                         <div class="modal-footer" style="margin-top: 20px">
                                                             <button style="width:100px" type="button" class="btn btn-secondary"
                                                                     data-bs-dismiss="modal">
@@ -108,7 +108,7 @@
                             </tr>
                             stt++;
                             <!-- Modal Update-->
-                           @* <div class="modal fade" id="@idEx1" tabindex="-1"
+                            <div class="modal fade" id="@idEx1" tabindex="-1"
                                  aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-xl">
                                     <div class="modal-content">
@@ -118,33 +118,27 @@
                                                     aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form method="POST" action="/Luong/Update" class="register-form" id="register-form">
+                                            <form method="POST" action="/ChamCong/Update" class="register-form" id="register-form">
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <div class="mb-3">
                                                             <label for="category-film"
-                                                                   class="col-form-label">Nhân viên:</label>
-                                                            <p>@item.NhanVien.hoTen</p>
-                                                            <input type="hidden" name="idLuong" value="@item.idChamCong" />
-                                                            <input type="hidden" name="idNhanVien" value="@item.NhanVien.idNhanVien" />
+                                                                   class="col-form-label">Chọn nhân viên:</label>
+                                                            <input type="hidden" name="idChamCong" value="@item.idChamCong" />
+                                                            <select class="form-select" name="idNhanVien" required aria-label="Default select example">
+                                                                <option selected value="@item.NhanVien.idNhanVien">@item.NhanVien.hoTen</option>
+                                                                @foreach (var item1 in ViewBag.ListNhanVien)
+                                                                {
+                                                                    <option value="@item1.idNhanVien">@item1.hoTen</option>
+                                                                }
+                                                            </select>
                                                         </div>
-                                                        <div class="mb-3">
-                                                            <label for="category-film"
-                                                                   class="col-form-label">Tiền Lương:</label>
-                                                            <input type="number" class="form-control" id="category-film" value="@item.tienLuong" required name="tienLuong">
-                                                        </div>
-
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="mb-3">
                                                             <label for="category-film"
-                                                                   class="col-form-label">Tháng:</label>
-                                                            <input type="number" class="form-control" id="category-film" readonly value="@item.thang" required name="thang">
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label for="category-film"
-                                                                   class="col-form-label">Loại tiền lương:</label>
-                                                            <input type="text" class="form-control" id="category-film" value="@item.loaiTienLuong" required name="loaiTienLuong">
+                                                                   class="col-form-label">Ngày chấm công:</label>
+                                                            <input type="date" class="form-control" id="category-film" required name="ngayChamCong" value="@item.ngayChamCong">
                                                         </div>
 
                                                     </div>
@@ -162,7 +156,7 @@
 
                                     </div>
                                 </div>
-                            </div>*@
+                            </div>
                         }
                     </tbody>
                 </table>
@@ -170,7 +164,7 @@
         </div>
     </div>
 </main>
-@*<div class="modal fade" id="exampleModalAdd" tabindex="-1"
+<div class="modal fade" id="exampleModalAdd" tabindex="-1"
      aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -180,7 +174,7 @@
                         aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="/Luong/Add" class="register-form" id="register-form">
+                <form method="POST" action="/ChamCong/Add" class="register-form" id="register-form">
                     <div class="row">
                         <div class="col-6">
                             <div class="mb-3">
@@ -195,25 +189,13 @@
                                 </select>
 
                             </div>
-                            <div class="mb-3">
-                                <label for="category-film"
-                                       class="col-form-label">Tiền Lương:</label>
-                                <input type="number" class="form-control" id="category-film" required name="tienLuong">
-                            </div>
-
                         </div>
                         <div class="col-6">
                             <div class="mb-3">
                                 <label for="category-film"
-                                       class="col-form-label">Tháng:</label>
-                                <input type="number" class="form-control" id="category-film" required name="thang">
+                                       class="col-form-label">Ngày chấm công:</label>
+                                <input type="date" class="form-control" id="category-film" required name="ngayChamCong">
                             </div>
-                            <div class="mb-3">
-                                <label for="category-film"
-                                       class="col-form-label">Loại tiền lương:</label>
-                                <input type="text" class="form-control" id="category-film" required name="loaiTienLuong">
-                            </div>
-
                         </div>
 
                     </div>
@@ -235,4 +217,3 @@
 
 
 
-*@

@@ -133,9 +133,14 @@
                                                         <div class="mb-3">
                                                             <label for="category-film"
                                                                    class="col-form-label">Nhân viên:</label>
-                                                            <p>@item.NhanVien.hoTen</p>
+                                                            <select class="form-select" name="idNhanVien" required aria-label="Default select example">
+                                                                <option selected value="@item.NhanVien.idNhanVien">@item.NhanVien.hoTen</option>
+                                                                @foreach (var item1 in ViewBag.ListNhanVien)
+                                                                {
+                                                                    <option value="@item1.idNhanVien">@item1.hoTen</option>
+                                                                }
+                                                            </select>
                                                             <input type="hidden" name="idLuong" value="@item.idLuong" />
-                                                            <input type="hidden" name="idNhanVien" value="@item.NhanVien.idNhanVien" />
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="category-film"
@@ -148,12 +153,24 @@
                                                         <div class="mb-3">
                                                             <label for="category-film"
                                                                    class="col-form-label">Tháng:</label>
-                                                            <input type="number" class="form-control" id="category-film" readonly value="@item.thang" required name="thang">
+                                                            <input type="number" class="form-control" id="category-film" min="1" max="12" value="@item.thang" required name="thang">
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="category-film"
                                                                    class="col-form-label">Loại tiền lương:</label>
-                                                            <input type="text" class="form-control" id="category-film" value="@item.loaiTienLuong" required name="loaiTienLuong">
+                                                            <select class="form-select" name="loaiTienLuong" required aria-label="Default select example">
+                                                                @if (item.loaiTienLuong == "Cơ bản")
+                                                                {
+                                                                    <option selected value="Cơ bản">Cơ bản </option>
+                                                                    <option value="Tăng lương">Tăng lương</option>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <option  value="Cơ bản">Cơ bản </option>
+                                                                    <option selected value="Tăng lương">Tăng lương</option>
+                                                                }
+
+                                                            </select>
                                                         </div>
 
                                                     </div>
@@ -215,12 +232,15 @@
                             <div class="mb-3">
                                 <label for="category-film"
                                        class="col-form-label">Tháng:</label>
-                                <input type="number" class="form-control" id="category-film" required name="thang">
+                                <input type="number" class="form-control" min="1" max="12" id="category-film" required name="thang">
                             </div>
                             <div class="mb-3">
                                 <label for="category-film"
                                        class="col-form-label">Loại tiền lương:</label>
-                                <input type="text" class="form-control" id="category-film" required name="loaiTienLuong">
+                                <select class="form-select" name="loaiTienLuong" required aria-label="Default select example">
+                                    <option selected value="Cơ bản">Cơ bản </option>
+                                    <option value="Tăng lương">Tăng lương</option>
+                                </select>
                             </div>
                           
                         </div>

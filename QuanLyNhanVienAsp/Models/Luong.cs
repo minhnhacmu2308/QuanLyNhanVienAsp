@@ -19,7 +19,7 @@ namespace QuanLyNhanVienAsp.Models
 
         public int thang { get; set; }
 
-        public int loaiTienLuong { get; set; }
+        public string loaiTienLuong { get; set; }
 
         public virtual NhanVien NhanVien { get; set; }
     }

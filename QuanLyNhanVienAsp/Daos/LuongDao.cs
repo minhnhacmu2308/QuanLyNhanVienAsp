@@ -13,6 +13,16 @@ namespace QuanLyNhanVienAsp.Daos
         {
             return myDb.luongs.ToList();
         }
+
+        public List<Luong> TangLuong(int thang)
+        {
+            return myDb.luongs.Where(x => x.thang == thang && x.loaiTienLuong == "Tăng lương").ToList();
+        }
+
+        public List<Luong> BangLuong(int thang)
+        {
+            return myDb.luongs.Where(x => x.thang == thang).ToList();
+        }
         public void Add(Luong luong)
         {
             myDb.luongs.Add(luong);

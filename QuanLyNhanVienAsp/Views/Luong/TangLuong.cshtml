@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "TangLuong";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="container-fluid px-4">
+        <div class="card mb-4">
+            <div class="card-header">
+                <form method="POST" action="/Luong/TangLuong" class="register-form" id="register-form">
+                    <div class="row" style="justify-content:space-around !important">
+                        <div class="col-6">
+                            <label for="category-film"
+                                   class="col-form-label">Chọn tháng:</label>
+                            <input type="number" class="form-control" id="category-film" name="thang" min="1" max="12">
+                        </div>
+                        <div class="col-6">
+                            <label for="category-film"
+                                   class="col-form-label"></label><br />
+                            <button type="submit" class="btn btn-success" style="margin-top:12px !important">
+                                Thống kê
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            @if (ViewBag.Thang != null)
+            {
+            <div style="margin:20px auto;">
+                <h5>Danh sách nhân viên tăng lương tháng @ViewBag.Thang</h5>
+            </div>
+            }
+            else
+            {
+
+            }
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead style="color:#0d6efd ">
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên nhân viên</th>
+                            <th>Tiền lương</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên nhân viên</th>
+                            <th>Tiền lương</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @{ var stt = 1;}
+                        @if (ViewBag.List != null)
+                        {
+                            foreach (var item in ViewBag.List)
+                            {
+                                <tr>
+                                    <td style="width:10px">@stt</td>
+                                    <td>
+                                        @item.NhanVien.hoTen
+                                    </td>
+                                    <td>
+                                        @item.tienLuong VNĐ
+                                    </td>
+                                </tr>
+                                stt++;
+
+                            }
+                        }
+                        else
+                        {
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+

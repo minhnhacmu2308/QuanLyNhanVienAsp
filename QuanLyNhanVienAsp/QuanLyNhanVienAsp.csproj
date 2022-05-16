@@ -142,6 +142,10 @@
     <Compile Include="Migrations\202205141610308_newDb.designer.cs">
       <DependentUpon>202205141610308_newDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205161230184_updatedb.cs" />
+    <Compile Include="Migrations\202205161230184_updatedb.designer.cs">
+      <DependentUpon>202205161230184_updatedb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ChamCong.cs" />
     <Compile Include="Models\DbContextQl.cs" />
@@ -206,6 +210,8 @@
     <Content Include="Views\NhanVien\Index.cshtml" />
     <Content Include="Views\Luong\Index.cshtml" />
     <Content Include="Views\ChamCong\Index.cshtml" />
+    <Content Include="Views\Luong\BangLuong.cshtml" />
+    <Content Include="Views\Luong\TangLuong.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -226,6 +232,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202205141610308_newDb.resx">
       <DependentUpon>202205141610308_newDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205161230184_updatedb.resx">
+      <DependentUpon>202205161230184_updatedb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
